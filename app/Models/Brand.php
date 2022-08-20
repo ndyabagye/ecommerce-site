@@ -11,11 +11,10 @@ class Brand extends Model
 
      protected $fillable = [
         'brand_name_en',
-        'brand_name_hin',
+        // 'brand_name_hin',
         'brand_slug_en',
-        'brand_slug_hin',
+        // 'brand_slug_hin',
         'brand_image',
     ];
 
 }
- 

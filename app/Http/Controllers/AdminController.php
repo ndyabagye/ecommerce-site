@@ -35,7 +35,7 @@ class AdminController extends Controller
     public function __construct(StatefulGuard $guard)
     {
         $this->guard = $guard;
-         
+
     }
 
     public function loginForm(){

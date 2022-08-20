@@ -16,7 +16,7 @@ use Image;
 
 class ProductController extends Controller
 {
-    
+
 	public function AddProduct(){
 		$categories = Category::latest()->get();
 		$brands = Brand::latest()->get();
@@ -38,25 +38,25 @@ class ProductController extends Controller
       	'subcategory_id' => $request->subcategory_id,
       	'subsubcategory_id' => $request->subsubcategory_id,
       	'product_name_en' => $request->product_name_en,
-      	'product_name_hin' => $request->product_name_hin,
+      	// 'product_name_hin' => $request->product_name_hin,
       	'product_slug_en' =>  strtolower(str_replace(' ', '-', $request->product_name_en)),
-      	'product_slug_hin' => str_replace(' ', '-', $request->product_name_hin),
+      	// 'product_slug_hin' => str_replace(' ', '-', $request->product_name_hin),
       	'product_code' => $request->product_code,
 
       	'product_qty' => $request->product_qty,
       	'product_tags_en' => $request->product_tags_en,
-      	'product_tags_hin' => $request->product_tags_hin,
+      	// 'product_tags_hin' => $request->product_tags_hin,
       	'product_size_en' => $request->product_size_en,
-      	'product_size_hin' => $request->product_size_hin,
+      	// 'product_size_hin' => $request->product_size_hin,
       	'product_color_en' => $request->product_color_en,
-      	'product_color_hin' => $request->product_color_hin,
+      	// 'product_color_hin' => $request->product_color_hin,
 
       	'selling_price' => $request->selling_price,
       	'discount_price' => $request->discount_price,
       	'short_descp_en' => $request->short_descp_en,
-      	'short_descp_hin' => $request->short_descp_hin,
+      	// 'short_descp_hin' => $request->short_descp_hin,
       	'long_descp_en' => $request->long_descp_en,
-      	'long_descp_hin' => $request->long_descp_hin,
+      	// 'long_descp_hin' => $request->long_descp_hin,
 
       	'hot_deals' => $request->hot_deals,
       	'featured' => $request->featured,
@@ -65,7 +65,7 @@ class ProductController extends Controller
 
       	'product_thambnail' => $save_url,
       	'status' => 1,
-      	'created_at' => Carbon::now(),   
+      	'created_at' => Carbon::now(),
 
       ]);
 
@@ -82,7 +82,7 @@ class ProductController extends Controller
 
     		'product_id' => $product_id,
     		'photo_name' => $uploadPath,
-    		'created_at' => Carbon::now(), 
+    		'created_at' => Carbon::now(),
 
     	]);
 
@@ -134,32 +134,32 @@ class ProductController extends Controller
       	'subcategory_id' => $request->subcategory_id,
       	'subsubcategory_id' => $request->subsubcategory_id,
       	'product_name_en' => $request->product_name_en,
-      	'product_name_hin' => $request->product_name_hin,
+      	// 'product_name_hin' => $request->product_name_hin,
       	'product_slug_en' =>  strtolower(str_replace(' ', '-', $request->product_name_en)),
-      	'product_slug_hin' => str_replace(' ', '-', $request->product_name_hin),
+      	// 'product_slug_hin' => str_replace(' ', '-', $request->product_name_hin),
       	'product_code' => $request->product_code,
 
       	'product_qty' => $request->product_qty,
       	'product_tags_en' => $request->product_tags_en,
-      	'product_tags_hin' => $request->product_tags_hin,
+      	// 'product_tags_hin' => $request->product_tags_hin,
       	'product_size_en' => $request->product_size_en,
-      	'product_size_hin' => $request->product_size_hin,
+      	// 'product_size_hin' => $request->product_size_hin,
       	'product_color_en' => $request->product_color_en,
-      	'product_color_hin' => $request->product_color_hin,
+      	// 'product_color_hin' => $request->product_color_hin,
 
       	'selling_price' => $request->selling_price,
       	'discount_price' => $request->discount_price,
       	'short_descp_en' => $request->short_descp_en,
-      	'short_descp_hin' => $request->short_descp_hin,
+      	// 'short_descp_hin' => $request->short_descp_hin,
       	'long_descp_en' => $request->long_descp_en,
-      	'long_descp_hin' => $request->long_descp_hin,
+      	// 'long_descp_hin' => $request->long_descp_hin,
 
       	'hot_deals' => $request->hot_deals,
       	'featured' => $request->featured,
       	'special_offer' => $request->special_offer,
-      	'special_deals' => $request->special_deals,      	 
+      	'special_deals' => $request->special_deals,
       	'status' => 1,
-      	'created_at' => Carbon::now(),   
+      	'created_at' => Carbon::now(),
 
       ]);
 
@@ -171,7 +171,7 @@ class ProductController extends Controller
 		return redirect()->route('manage-product')->with($notification);
 
 
-	} // end method 
+	} // end method
 
 
 /// Multiple Image Update
@@ -181,7 +181,7 @@ class ProductController extends Controller
 		foreach ($imgs as $id => $img) {
 	    $imgDel = MultiImg::findOrFail($id);
 	    unlink($imgDel->photo_name);
-	     
+
     	$make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
     	Image::make($img)->resize(917,1000)->save('upload/products/multi-image/'.$make_name);
     	$uploadPath = 'upload/products/multi-image/'.$make_name;
@@ -201,10 +201,10 @@ class ProductController extends Controller
 
 		return redirect()->back()->with($notification);
 
-	} // end mehtod 
+	} // end mehtod
 
 
- /// Product Main Thambnail Update /// 
+ /// Product Main Thambnail Update ///
  public function ThambnailImageUpdate(Request $request){
  	$pro_id = $request->id;
  	$oldImage = $request->old_img;
@@ -244,7 +244,7 @@ class ProductController extends Controller
 
 		return redirect()->back()->with($notification);
 
-     } // end method 
+     } // end method
 
 
 
@@ -267,7 +267,7 @@ class ProductController extends Controller
 		);
 
 		return redirect()->back()->with($notification);
-     	
+
      }
 
 
@@ -290,11 +290,11 @@ class ProductController extends Controller
 
 		return redirect()->back()->with($notification);
 
-     }// end method 
+     }// end method
 
 
 
-  // product Stock 
+  // product Stock
 public function ProductStock(){
 
     $products = Product::latest()->get();
@@ -303,4 +303,3 @@ public function ProductStock(){
 
 
 }
- 

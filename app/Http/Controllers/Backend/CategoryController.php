@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
- 
+
 class CategoryController extends Controller
 {
     public function CategoryView(){
@@ -18,20 +18,20 @@ class CategoryController extends Controller
 
        $request->validate([
     		'category_name_en' => 'required',
-    		'category_name_hin' => 'required',
+    		// 'category_name_hin' => 'required',
     		'category_icon' => 'required',
     	],[
     		'category_name_en.required' => 'Input Category English Name',
-    		'category_name_hin.required' => 'Input Category Hindi Name',
+    		// 'category_name_hin.required' => 'Input Category Hindi Name',
     	]);
 
-    	 
+
 
 	Category::insert([
 		'category_name_en' => $request->category_name_en,
-		'category_name_hin' => $request->category_name_hin,
+		// 'category_name_hin' => $request->category_name_hin,
 		'category_slug_en' => strtolower(str_replace(' ', '-',$request->category_name_en)),
-		'category_slug_hin' => str_replace(' ', '-',$request->category_name_hin),
+		// 'category_slug_hin' => str_replace(' ', '-',$request->category_name_hin),
 		'category_icon' => $request->category_icon,
 
     	]);
@@ -43,7 +43,7 @@ class CategoryController extends Controller
 
 		return redirect()->back()->with($notification);
 
-    } // end method 
+    } // end method
 
 
     public function CategoryEdit($id){
@@ -55,13 +55,13 @@ class CategoryController extends Controller
 
     public function CategoryUpdate(Request $request ,$id){
 
-    	 
+
 
       Category::findOrFail($id)->update([
 		'category_name_en' => $request->category_name_en,
-		'category_name_hin' => $request->category_name_hin,
+		// 'category_name_hin' => $request->category_name_hin,
 		'category_slug_en' => strtolower(str_replace(' ', '-',$request->category_name_en)),
-		'category_slug_hin' => str_replace(' ', '-',$request->category_name_hin),
+		// 'category_slug_hin' => str_replace(' ', '-',$request->category_name_hin),
 		'category_icon' => $request->category_icon,
 
     	]);
@@ -88,8 +88,7 @@ class CategoryController extends Controller
 
 		return redirect()->back()->with($notification);
 
-    } // end method 
+    } // end method
 
 
 }
- 

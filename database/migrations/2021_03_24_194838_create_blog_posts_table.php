@@ -17,12 +17,12 @@ class CreateBlogPostsTable extends Migration
             $table->id();
             $table->integer('category_id');
             $table->string('post_title_en');
-            $table->string('post_title_hin');
+            // $table->string('post_title_hin');
             $table->string('post_slug_en');
-            $table->string('post_slug_hin');
+            // $table->string('post_slug_hin');
             $table->string('post_image');
             $table->text('post_details_en');
-            $table->text('post_details_hin'); 
+            // $table->text('post_details_hin');
             $table->timestamps();
         });
     }

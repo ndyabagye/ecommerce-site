@@ -22,22 +22,22 @@ class BlogController extends Controller
 
        $request->validate([
     		'blog_category_name_en' => 'required',
-    		'blog_category_name_hin' => 'required',
-    		 
+    		// 'blog_category_name_hin' => 'required',
+
     	],[
     		'blog_category_name_en.required' => 'Input Blog Category English Name',
-    		'blog_category_name_hin.required' => 'Input Blog Category Hindi Name',
+    		// 'blog_category_name_hin.required' => 'Input Blog Category Hindi Name',
     	]);
 
-    	 
+
 
 	BlogPostCategory::insert([
 		'blog_category_name_en' => $request->blog_category_name_en,
-		'blog_category_name_hin' => $request->blog_category_name_hin,
+		// 'blog_category_name_hin' => $request->blog_category_name_hin,
 		'blog_category_slug_en' => strtolower(str_replace(' ', '-',$request->blog_category_name_en)),
-		'blog_category_slug_hin' => str_replace(' ', '-',$request->blog_category_name_hin),
+		// 'blog_category_slug_hin' => str_replace(' ', '-',$request->blog_category_name_hin),
 		'created_at' => Carbon::now(),
-		 
+
 
     	]);
 
@@ -48,7 +48,7 @@ class BlogController extends Controller
 
 		return redirect()->back()->with($notification);
 
-    } // end method 
+    } // end method
 
 
 
@@ -64,15 +64,15 @@ class BlogController extends Controller
 public function BlogCategoryUpdate(Request $request){
 
        $blogcar_id = $request->id;
-    	 
+
 
 	BlogPostCategory::findOrFail($blogcar_id)->update([
 		'blog_category_name_en' => $request->blog_category_name_en,
-		'blog_category_name_hin' => $request->blog_category_name_hin,
+		// 'blog_category_name_hin' => $request->blog_category_name_hin,
 		'blog_category_slug_en' => strtolower(str_replace(' ', '-',$request->blog_category_name_en)),
-		'blog_category_slug_hin' => str_replace(' ', '-',$request->blog_category_name_hin),
+		// 'blog_category_slug_hin' => str_replace(' ', '-',$request->blog_category_name_hin),
 		'created_at' => Carbon::now(),
-		 
+
 
     	]);
 
@@ -83,7 +83,7 @@ public function BlogCategoryUpdate(Request $request){
 
 		return redirect()->route('blog.category')->with($notification);
 
-    } // end method 
+    } // end method
 
 
 
@@ -102,18 +102,18 @@ public function BlogCategoryUpdate(Request $request){
   	$blogpost = BlogPost::latest()->get();
   	return view('backend.blog.post.post_view',compact('blogpost','blogcategory'));
 
-  }   
+  }
 
 
   public function BlogPostStore(Request $request){
 
   	$request->validate([
     		'post_title_en' => 'required',
-    		'post_title_hin' => 'required',
+    		// 'post_title_hin' => 'required',
     		'post_image' => 'required',
     	],[
     		'post_title_en.required' => 'Input Post Title English Name',
-    		'post_title_hin.required' => 'Input Post Title Hindi Name',
+    		// 'post_title_hin.required' => 'Input Post Title Hindi Name',
     	]);
 
     	$image = $request->file('post_image');
@@ -124,12 +124,12 @@ public function BlogCategoryUpdate(Request $request){
 	BlogPost::insert([
 		'category_id' => $request->category_id,
 		'post_title_en' => $request->post_title_en,
-		'post_title_hin' => $request->post_title_hin,
+		// 'post_title_hin' => $request->post_title_hin,
 		'post_slug_en' => strtolower(str_replace(' ', '-',$request->post_title_en)),
-		'post_slug_hin' => str_replace(' ', '-',$request->post_title_hin),
+		// 'post_slug_hin' => str_replace(' ', '-',$request->post_title_hin),
 		'post_image' => $save_url,
 		'post_details_en' => $request->post_details_en,
-		'post_details_hin' => $request->post_details_hin,
+		// 'post_details_hin' => $request->post_details_hin,
 		'created_at' => Carbon::now(),
 
     	]);
@@ -141,9 +141,8 @@ public function BlogCategoryUpdate(Request $request){
 
 		return redirect()->route('list.post')->with($notification);
 
-  } // end mehtod 
+  } // end mehtod
 
 
 
 }
- 

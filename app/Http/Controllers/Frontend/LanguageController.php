@@ -30,4 +30,3 @@ class LanguageController extends Controller
 
 
 }
- 

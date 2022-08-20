@@ -21,11 +21,11 @@ class BrandController extends Controller
 
     	$request->validate([
     		'brand_name_en' => 'required',
-    		'brand_name_hin' => 'required',
+    		// 'brand_name_hin' => 'required',
     		'brand_image' => 'required',
     	],[
     		'brand_name_en.required' => 'Input Brand English Name',
-    		'brand_name_hin.required' => 'Input Brand Hindi Name',
+    		// 'brand_name_hin.required' => 'Input Brand Hindi Name',
     	]);
 
     	$image = $request->file('brand_image');
@@ -35,9 +35,9 @@ class BrandController extends Controller
 
 	Brand::insert([
 		'brand_name_en' => $request->brand_name_en,
-		'brand_name_hin' => $request->brand_name_hin,
+		// 'brand_name_hin' => $request->brand_name_hin,
 		'brand_slug_en' => strtolower(str_replace(' ', '-',$request->brand_name_en)),
-		'brand_slug_hin' => str_replace(' ', '-',$request->brand_name_hin),
+		// 'brand_slug_hin' => str_replace(' ', '-',$request->brand_name_hin),
 		'brand_image' => $save_url,
 
     	]);
@@ -49,7 +49,7 @@ class BrandController extends Controller
 
 		return redirect()->back()->with($notification);
 
-    } // end method 
+    } // end method
 
 
 
@@ -61,7 +61,7 @@ class BrandController extends Controller
 
 
     public function BrandUpdate(Request $request){
-    	
+
     	$brand_id = $request->id;
     	$old_img = $request->old_image;
 
@@ -75,9 +75,9 @@ class BrandController extends Controller
 
 	Brand::findOrFail($brand_id)->update([
 		'brand_name_en' => $request->brand_name_en,
-		'brand_name_hin' => $request->brand_name_hin,
+		// 'brand_name_hin' => $request->brand_name_hin,
 		'brand_slug_en' => strtolower(str_replace(' ', '-',$request->brand_name_en)),
-		'brand_slug_hin' => str_replace(' ', '-',$request->brand_name_hin),
+		// 'brand_slug_hin' => str_replace(' ', '-',$request->brand_name_hin),
 		'brand_image' => $save_url,
 
     	]);
@@ -93,10 +93,10 @@ class BrandController extends Controller
 
     	Brand::findOrFail($brand_id)->update([
 		'brand_name_en' => $request->brand_name_en,
-		'brand_name_hin' => $request->brand_name_hin,
+		// 'brand_name_hin' => $request->brand_name_hin,
 		'brand_slug_en' => strtolower(str_replace(' ', '-',$request->brand_name_en)),
-		'brand_slug_hin' => str_replace(' ', '-',$request->brand_name_hin),
-		 
+		// 'brand_slug_hin' => str_replace(' ', '-',$request->brand_name_hin),
+
 
     	]);
 
@@ -107,8 +107,8 @@ class BrandController extends Controller
 
 		return redirect()->route('all.brand')->with($notification);
 
-    	} // end else 
-    } // end method 
+    	} // end else
+    } // end method
 
 
 
@@ -127,9 +127,8 @@ class BrandController extends Controller
 
 		return redirect()->back()->with($notification);
 
-    } // end method 
+    } // end method
 
 
 
 }
- 

@@ -8,25 +8,25 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
           <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
 
 
-   
+
         @foreach($hot_deals as $product)
             <div class="item">
               <div class="products">
-                <div class="hot-deal-wrapper"> 
+                <div class="hot-deal-wrapper">
                   <div class="image"> <img src="{{ asset($product->product_thambnail) }}" alt=""> </div>
 
         @php
         $amount = $product->selling_price - $product->discount_price;
         $discount = ($amount/$product->selling_price) * 100;
-        @endphp   
-                  
+        @endphp
+
               @if ($product->discount_price == NULL)
                 <div class="tag new"><span>new</span></div>
               @else
               <div class="sale-offer-tag"><span>{{ round($discount) }}%<br>
                     off</span></div>
               @endif
-                  
+
 
 
 
@@ -46,10 +46,9 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
                   </div>
                 </div>
                 <!-- /.hot-deal-wrapper -->
-                
+
   <div class="product-info text-left m-t-20">
-    <h3 class="name"><a href="detail.html">
-      @if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
+    <h3 class="name"><a href="detail.html">{{ $product->product_name_en }}</a></h3>
     <div class="rating rateit-small"></div>
 
      @if ($product->discount_price == NULL)
@@ -58,12 +57,12 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
  <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">${{ $product->selling_price }}</span> </div>
      @endif
 
-   
-    <!-- /.product-price --> 
-                  
+
+    <!-- /.product-price -->
+
                 </div>
                 <!-- /.product-info -->
-                
+
                 <div class="cart clearfix animate-effect">
                   <div class="action">
                     <div class="add-cart-button btn-group">
@@ -71,9 +70,9 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
                       <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                     </div>
                   </div>
-                  <!-- /.action --> 
+                  <!-- /.action -->
                 </div>
-                <!-- /.cart --> 
+                <!-- /.cart -->
               </div>
             </div>
              @endforeach <!-- // end hot deals foreach -->
@@ -83,5 +82,5 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
 
 
           </div>
-          <!-- /.sidebar-widget --> 
+          <!-- /.sidebar-widget -->
         </div>
