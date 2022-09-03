@@ -83,7 +83,7 @@
             <form method="post" action="{{ route('product.search') }}">
               @csrf
               <div class="control-group">
-                <ul class="categories-filter animate-dropdown">
+                {{-- <ul class="categories-filter animate-dropdown">
                   <li class="dropdown"> <a class="dropdown-toggle"  data-toggle="dropdown" href="category.html">Categories <b class="caret"></b></a>
                     <ul class="dropdown-menu" role="menu" >
                       <li class="menu-header">Computer</li>
@@ -93,9 +93,9 @@
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Watches</a></li>
                     </ul>
                   </li>
-                </ul>
+                </ul> --}}
      <input class="search-field" name="search" placeholder="Search here..." />
-                <a class="search-button" href="#" ></a> </div>
+                <button type="submit" class="search-button" ></button> </div>
             </form>
           </div>
           <!-- /.search-area -->

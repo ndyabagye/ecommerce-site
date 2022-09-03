@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
-
+ini_set('max_execution_time',0);
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;

@@ -46,7 +46,9 @@ class CheckoutController extends Controller
     		return view('frontend.payment.stripe',compact('data','cartTotal'));
     	}elseif ($request->payment_method == 'card') {
     		return 'card';
-    	}else{
+    	}elseif ($request->payment_method == 'wave') {
+			return view('frontend.payment.wave',compact('data','cartTotal'));
+		}else{
             return view('frontend.payment.cash',compact('data','cartTotal'));
     	}
     	 

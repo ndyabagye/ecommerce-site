@@ -30,6 +30,7 @@ use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\CashController;
 use App\Http\Controllers\User\ReviewController;
+use App\Http\Controllers\User\FlutterWaveController;
 
 use App\Http\Controllers\User\AllUserController;
 /*
@@ -271,6 +272,10 @@ Route::get('/cancel/orders', [AllUserController::class, 'CancelOrders'])->name('
 Route::post('/order/tracking', [AllUserController::class, 'OrderTraking'])->name('order.tracking');
 
 });
+
+// Flutter wave
+Route::post('/pay', [FlutterWaveController::class, 'initialise'])->name('wave.pay');
+Route::get('/rave/callback', [FlutterWaveController::class, 'callback'])->name('callback');
 
 
 

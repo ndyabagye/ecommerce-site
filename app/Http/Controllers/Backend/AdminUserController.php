@@ -15,7 +15,7 @@ class AdminUserController extends Controller
 {
     public function AllAdminRole(){
 
-    	$adminuser = Admin::where('type',2)->latest()->get();
+    	$adminuser = Admin::latest()->get();
     	return view('backend.role.admin_role_all',compact('adminuser'));
 
     } // end method 
@@ -39,25 +39,25 @@ class AdminUserController extends Controller
 		'name' => $request->name,
 		'email' => $request->email,
 		'password' => Hash::make($request->password),
-		'phone' => $request->phone,
-		'brand' => $request->brand,
-		'category' => $request->category,
-		'product' => $request->product,
-		'slider' => $request->slider,
-		'coupons' => $request->coupons,
+		// 'phone' => $request->phone,
+		// 'brand' => $request->brand,
+		// 'category' => $request->category,
+		// 'product' => $request->product,
+		// 'slider' => $request->slider,
+		// 'coupons' => $request->coupons,
 
-		'shipping' => $request->shipping,
-		'blog' => $request->blog,
-		'setting' => $request->setting,
-		'returnorder' => $request->returnorder,
-		'review' => $request->review,
+		// 'shipping' => $request->shipping,
+		// 'blog' => $request->blog,
+		// 'setting' => $request->setting,
+		// 'returnorder' => $request->returnorder,
+		// 'review' => $request->review,
 
-		'orders' => $request->orders,
-		'stock' => $request->stock,
-		'reports' => $request->reports,
-		'alluser' => $request->alluser,
-		'adminuserrole' => $request->adminuserrole,
-		'type' => 2,
+		// 'orders' => $request->orders,
+		// 'stock' => $request->stock,
+		// 'reports' => $request->reports,
+		// 'alluser' => $request->alluser,
+		// 'adminuserrole' => $request->adminuserrole,
+		// 'type' => 2,
 		'profile_photo_path' => $save_url,
 		'created_at' => Carbon::now(),
 		 

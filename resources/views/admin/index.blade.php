@@ -77,7 +77,7 @@
 <div class="box">
 	<div class="box-header">
 		<h4 class="box-title align-items-start flex-column">
-		 Recent All Orders 
+		 Recent All Pending Orders 
 			 
 		</h4>
 	</div>

@@ -243,8 +243,8 @@ My Checkout
 
 		    <div class="row">
 		    	<div class="col-md-4">
-		   <label for="">Stripe</label> 		
-       <input type="radio" name="payment_method" value="stripe">
+		   <label for="">Flutter Wave</label> 		
+       <input type="radio" name="payment_method" value="wave">
        <img src="{{ asset('frontend/assets/images/payments/4.png') }}">		    		
 		    	</div> <!-- end col md 4 -->
 
