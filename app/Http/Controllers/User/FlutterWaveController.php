@@ -78,6 +78,8 @@ class FlutterWaveController extends Controller
            
                 ]);
 
+                Session::put('flutter_order_id', $order_id);
+
                 $carts = Cart::content();
                 foreach ($carts as $cart) {
                     OrderItem::insert([
@@ -110,6 +112,14 @@ class FlutterWaveController extends Controller
         
         $transactionID = Flutterwave::getTransactionIDFromCallback();
         $data = Flutterwave::verifyTransaction($transactionID);
+
+        if(Session::has('flutter_order_id')) {
+            $flutter_order = Order::findOrFail(Session::get('flutter_order_id'));
+            $flutter_order->update([
+                'transaction_id' => $transactionID
+            ]);
+            Session::forget('flutter_order_id');
+        }
 
       $notification = array(
         'message' => 'Your Order Place Successfully',

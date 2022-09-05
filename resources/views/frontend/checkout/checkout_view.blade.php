@@ -115,10 +115,10 @@ My Checkout
 
 
 		 <div class="form-group">
-	<h5><b>State Select</b> <span class="text-danger">*</span></h5>
+	<h5><b>Pickup Station Select</b> <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="state_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Select State</option>
+			<option value="" selected="" disabled="">Select Pick Station</option>
 			 
 		</select>
 		@error('state_id') 
@@ -192,7 +192,9 @@ My Checkout
 		 <li>
 		 	@if(Session::has('coupon'))
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>CartTotal: </strong> ${{ $cartTotal }} <hr>
+
+<strong>Shipping Fee: </strong> ${{ $cartTotal }} <hr>
 
 <strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
@@ -207,7 +209,9 @@ My Checkout
 
 		 	@else
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>CartTotal: </strong> ${{ $cartTotal }} <hr>
+
+<strong>Shipping Fee: </strong> ${{ $cartTotal }} <hr>
 
 <strong>Grand Total : </strong> ${{ $cartTotal }} <hr>
 
@@ -330,7 +334,7 @@ My Checkout
                     success:function(data) {
                        var d =$('select[name="state_id"]').empty();
                           $.each(data, function(key, value){
-                              $('select[name="state_id"]').append('<option value="'+ value.id +'">' + value.state_name + '</option>');
+                              $('select[name="state_id"]').append('<option value="'+ value.id +'">' + value.state_name + ' --- '+ value.shipping_amount+'</option>');
                           });
                     },
                 });

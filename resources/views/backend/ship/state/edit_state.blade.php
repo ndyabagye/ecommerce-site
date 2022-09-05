@@ -70,9 +70,20 @@
 
 
 	 <div class="form-group">
-		<h5>State Name  <span class="text-danger">*</span></h5>
+		<h5>Pickup station Name  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="state_name" class="form-control" value="{{ $state->state_name }}"> 
+	 @error('state_name	') 
+	 <span class="text-danger">{{ $message }}</span>
+	 @enderror 
+	</div>
+	</div>
+
+
+	<div class="form-group">
+		<h5>Shipping Cost  <span class="text-danger">*</span></h5>
+		<div class="controls">
+	 <input type="text"  name="shipping_amount" class="form-control" value="{{ $state->shipping_amount }}"> 
 	 @error('state_name	') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror 

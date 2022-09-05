@@ -193,7 +193,8 @@ public function DistrictEdit($id){
     	$request->validate([
     		'division_id' => 'required',  
     		'district_id' => 'required', 
-    		'state_name' => 'required', 	 
+    		'state_name' => 'required',
+			'shipping_amount' => 'required' 	 
     	 
     	]);
     	 
@@ -203,6 +204,7 @@ public function DistrictEdit($id){
 		'division_id' => $request->division_id,
 		'district_id' => $request->district_id,
 		'state_name' => $request->state_name,
+		'shipping_amount' => $request->shipping_amount,
 		'created_at' => Carbon::now(),
 
     	]);
@@ -234,6 +236,7 @@ public function StateEdit($id){
 		'division_id' => $request->division_id,
 		'district_id' => $request->district_id,
 		'state_name' => $request->state_name,
+		'shipping_amount' => $request->shipping_amount,
 		'created_at' => Carbon::now(),
 
     	]);

@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">State List</h3>
+				  <h3 class="box-title">Pickup Stations List</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -28,7 +28,8 @@
 							<tr>
 								<th>Division Name </th> 
 								<th>District Name </th>
-								<th>State Name </th>
+								<th>Station Name </th>
+								<th>Shipping Cost</th>
 								<th>Action</th>
 								 
 							</tr>
@@ -39,6 +40,7 @@
 		<td> {{ $item->division->division_name }}  </td> 
 		<td> {{ $item->district->district_name }}  </td> 
 		<td> {{ $item->state_name }}  </td>
+		<td> {{ $item->shipping_amount}} </td>
 
 		<td width="40%">
  <a href="{{ route('state.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
@@ -69,7 +71,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add State </h3>
+				  <h3 class="box-title">Add Pickup Station </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -116,10 +118,20 @@
 
 
 	 <div class="form-group">
-		<h5>State Name  <span class="text-danger">*</span></h5>
+		<h5>Pickup station Name  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="state_name" class="form-control" > 
 	 @error('state_name	') 
+	 <span class="text-danger">{{ $message }}</span>
+	 @enderror 
+	</div>
+	</div>
+
+	<div class="form-group">
+		<h5>Shipping Cost  <span class="text-danger">*</span></h5>
+		<div class="controls">
+	 <input type="number"  name="shipping_amount" class="form-control" > 
+	 @error('shipping_amount ') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror 
 	</div>
