@@ -117,8 +117,8 @@ My Checkout
 		 <div class="form-group">
 	<h5><b>Pickup Station Select</b> <span class="text-danger">*</span></h5>
 	<div class="controls">
-		<select name="state_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Select Pick Station</option>
+		<select name="state_id" class="form-control" required="" id="station">
+			<option value="" selected="" disabled="">Select Pickup Station</option>
 			 
 		</select>
 		@error('state_id') 
@@ -194,7 +194,7 @@ My Checkout
 
 <strong>CartTotal: </strong> ${{ $cartTotal }} <hr>
 
-<strong>Shipping Fee: </strong> ${{ $cartTotal }} <hr>
+<strong>Shipping Fee: </strong> <span>$0</span> <hr>
 
 <strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
@@ -209,11 +209,11 @@ My Checkout
 
 		 	@else
 
-<strong>CartTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>CartTotal: </strong> <span id="cartTotal">{{ $cartTotal }}</span> <hr>
 
-<strong>Shipping Fee: </strong> ${{ $cartTotal }} <hr>
+<strong>Shipping Fee: </strong> <span id="shippingFee">0</span> <hr>
 
-<strong>Grand Total : </strong> ${{ $cartTotal }} <hr>
+<strong>Grand Total : </strong> <span id="grandTotal">{{ $cartTotal }}</span>  <hr>
 
 
 		 	@endif 
@@ -230,7 +230,9 @@ My Checkout
 <!-- checkout-progress-sidebar --> </div>
 
 
+{{-- Amount Input --}}
 
+<input type="hidden" name="grand_total">
 
 
 
@@ -301,6 +303,13 @@ My Checkout
 
  
  <script type="text/javascript">
+
+ //Amounts
+ $('#shippingFee').text('$' + $('#shippingFee').text());
+ $('#grandTotal').text('$'+$('#cartTotal').text());
+ $('#cartTotal').text('$'+$('#cartTotal').text())
+
+
       $(document).ready(function() {
         $('select[name="division_id"]').on('change', function(){
             var division_id = $(this).val();
@@ -310,7 +319,7 @@ My Checkout
                     type:"GET",
                     dataType:"json",
                     success:function(data) {
-                    	$('select[name="state_id"]').empty(); 
+                    	// $('select[name="state_id"]').empty(); 
                        var d =$('select[name="district_id"]').empty();
                           $.each(data, function(key, value){
                               $('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.district_name + '</option>');
@@ -332,9 +341,13 @@ My Checkout
                     type:"GET",
                     dataType:"json",
                     success:function(data) {
-                       var d =$('select[name="state_id"]').empty();
+					if ($('#station').val()) {
+						$('select[name="state_id"]').empty();
+						$('select[name="state_id"]').append('<option value="">Select Pickup Station</option>');
+					}
+					localStorage.setItem('stations',JSON.stringify(data));
                           $.each(data, function(key, value){
-                              $('select[name="state_id"]').append('<option value="'+ value.id +'">' + value.state_name + ' --- '+ value.shipping_amount+'</option>');
+                              $('select[name="state_id"]').append('<option value="'+ value.id +'">' + value.state_name + ' ---> '+ value.shipping_amount+'</option>');
                           });
                     },
                 });
@@ -345,6 +358,18 @@ My Checkout
  
 
     });
+
+	/*
+	*Manage Station shipping prices
+	*/
+	$('select[name="state_id"]').on('change', function(){
+		let cartTotal = parseFloat($('#cartTotal').text().substring(1));
+		let shippingCost = parseFloat(JSON.parse(localStorage.getItem('stations')).find((station) => station.id == parseInt($(this).val())).shipping_amount);
+		let grandTotal = parseFloat(cartTotal + shippingCost);
+		$('#shippingFee').text('$'+shippingCost);
+		$('#grandTotal').text('$'+grandTotal);
+		$('input[name=grand_total]').val(grandTotal);
+	});
     </script>
 
 

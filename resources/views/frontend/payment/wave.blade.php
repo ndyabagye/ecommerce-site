@@ -74,7 +74,7 @@ Flutter Wave Payment
 		 <li>
 		 	@if(Session::has('coupon'))
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>SubTotal: </strong> ${{ $grandTotal }} <hr>
 
 <strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
@@ -89,9 +89,9 @@ Flutter Wave Payment
 
 		 	@else
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>SubTotal: </strong> ${{ $grandTotal }} <hr>
 
-<strong>Grand Total : </strong> ${{ $cartTotal }} <hr>
+<strong>Grand Total : </strong> ${{ $grandTotal }} <hr>
 
 
 		 	@endif 
@@ -136,7 +136,7 @@ Flutter Wave Payment
       <input type="hidden" name="district_id"  value="{{ $data['district_id'] }}">
       <input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
       <input type="hidden" name="notes"  value="{{ $data['notes'] }}">
-      <input type="hidden" name="amount"  value="{{ $cartTotal }}"> 
+      <input type="hidden" name="amount"  value="{{ $grandTotal }}"> 
             </label>
              
             <div id="card-element">

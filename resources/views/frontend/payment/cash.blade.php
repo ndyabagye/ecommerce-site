@@ -48,7 +48,7 @@ Cash On Delivery
 		 <li>
 		 	@if(Session::has('coupon'))
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>SubTotal: </strong> ${{ $grandTotal }} <hr>
 
 <strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
@@ -63,9 +63,9 @@ Cash On Delivery
 
 		 	@else
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>SubTotal: </strong> ${{ $grandTotal }} <hr>
 
-<strong>Grand Total : </strong> ${{ $cartTotal }} <hr>
+<strong>Grand Total : </strong> ${{ $grandTotal }} <hr>
 
 
 		 	@endif 

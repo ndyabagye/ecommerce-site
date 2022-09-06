@@ -39,17 +39,17 @@ class CheckoutController extends Controller
     	$data['district_id'] = $request->district_id;
     	$data['state_id'] = $request->state_id;
     	$data['notes'] = $request->notes;
-    	$cartTotal = Cart::total();
+    	$grandTotal = $request->grand_total;
 
 
     	if ($request->payment_method == 'stripe') {
-    		return view('frontend.payment.stripe',compact('data','cartTotal'));
+    		return view('frontend.payment.stripe',compact('data','grandTotal'));
     	}elseif ($request->payment_method == 'card') {
     		return 'card';
     	}elseif ($request->payment_method == 'wave') {
-			return view('frontend.payment.wave',compact('data','cartTotal'));
+			return view('frontend.payment.wave',compact('data','grandTotal'));
 		}else{
-            return view('frontend.payment.cash',compact('data','cartTotal'));
+            return view('frontend.payment.cash',compact('data','grandTotal'));
     	}
     	 
 
