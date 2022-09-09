@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -58,10 +58,10 @@ width: 100% !important;
  
 </td>
 
-<td> Invoice No : {{ $order['invoice_no'] }}</td>
-<td> Amount : {{ $order['amount'] }}</td>
-<td> Name : {{ $order['name'] }}</td>
-<td> Email : {{ $order['email'] }}</td>
+<td> Invoice No : {{ $data['invoice_no'] }}</td>
+<td> Amount : {{ $data['amount'] }}</td>
+<td> Name : {{ $data['name'] }}</td>
+<td> Email : {{ $data['email'] }}</td>
 
 </tr>
 

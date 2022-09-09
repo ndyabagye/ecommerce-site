@@ -23,7 +23,7 @@ class CashController extends Controller
     	if (Session::has('coupon')) {
     		$total_amount = Session::get('coupon')['total_amount'];
     	}else{
-    		$total_amount = round(Cart::total());
+    		$total_amount = round($request->amount);
     	}
  
 	 
@@ -58,16 +58,21 @@ class CashController extends Controller
      ]);
 
      // Start Send Email 
-     $invoice = Order::findOrFail($order_id);
-     	$data = [
-     		'invoice_no' => $invoice->invoice_no,
-     		'amount' => $total_amount,
-     		'name' => $invoice->name,
-     	    'email' => $invoice->email,
-     	    
-     	];
+	 try {
+		$invoice = Order::findOrFail($order_id);
+		$data = [
+			'invoice_no' => $invoice->invoice_no,
+			'amount' => $total_amount,
+			'name' => $invoice->name,
+			'email' => $invoice->email,
+			
+		];
 
-     	Mail::to($request->email)->send(new OrderMail($data));
+		Mail::to($request->email)->send(new OrderMail($data));
+
+	 } catch (\Throwable $th) {
+		return $th->getMessage();
+	 }
 
      // End Send Email 
 

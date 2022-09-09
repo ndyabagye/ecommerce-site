@@ -112,7 +112,8 @@ Cash On Delivery
       <input type="hidden" name="division_id" value="{{ $data['division_id'] }}">
       <input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
       <input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
-      <input type="hidden" name="notes" value="{{ $data['notes'] }}"> 
+      <input type="hidden" name="notes" value="{{ $data['notes'] }}">
+	  <input type="hidden" name="amount" value="{{$grandTotal}}"/>
 
             </label>
              
