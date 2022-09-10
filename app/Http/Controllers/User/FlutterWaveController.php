@@ -106,6 +106,7 @@ class FlutterWaveController extends Controller
                }
 
                Cart::destroy();
+               Session::forget('flutter_wave_order');
 
             try {
                 $invoice = Order::findOrFail($order_id);
